@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const Macros = require('./macros-model');
+const User = require('./macros-model');
 
 router.get('/', async (req, res, next) => {
     try{
-        const macros = await Macros.getMacros();
-        res.status(200).json(macros)
+        const user = await User.getMacros();
+        res.status(200).json(user)
     }catch(err){
         next(err)
     }
