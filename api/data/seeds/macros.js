@@ -3,12 +3,12 @@
  * @returns { Promise<void> }
  */
 
-const macros = [{ fat: 25, carb: 50, protein: 25 }];
+const macros =  {id: 1, fat: 25, carb:50, protein: 25} ;
 
 exports.macros = macros;
 
-exports.seed = async function (knex) {
+exports.seed =  function (knex) {
   // Deletes ALL existing entries
   // await knex('macros').del()
-  await knex('macros').insert(macros);
+  return knex('macros').insert(macros);
 };
