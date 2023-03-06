@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
     "nseed": "knex seed:make",
     "seed": "knex seed:run",
     "make": "knex migrate:make"

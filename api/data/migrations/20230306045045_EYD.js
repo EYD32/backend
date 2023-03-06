@@ -9,7 +9,6 @@ exports.up = async (knex) => {
       macros.integer('fat').unsigned()
       macros.integer('carb').unsigned()
       macros.integer('protein').unsigned()
-
   })
 };
 
