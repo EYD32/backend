@@ -5,8 +5,8 @@ const server = express()
 server.use(express.json())
 server.use(cors())
 
-const macrosRouter = require('./user/user-router')
+const userRouter = require('./user/user-router')
 
-server.use('/api/macros', macrosRouter)
+server.use('/api/user', userRouter)
 
 module.exports = server
