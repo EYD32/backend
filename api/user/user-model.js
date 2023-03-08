@@ -1,14 +1,14 @@
 const db = require('../data/db-config')
 
-function getMacros(){
+function getUser(){
     return db('user')
 }
 
-function updateMacros(id, changes){
+function updateUser(id, changes){
     return db('user').where({id}).update(changes)
 }
 
 module.exports = {
-    getMacros,
-    updateMacros
+    getUser,
+    updateUser
 }

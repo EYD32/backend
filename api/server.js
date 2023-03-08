@@ -5,7 +5,7 @@ const server = express()
 server.use(express.json())
 server.use(cors())
 
-const macrosRouter = require('./macros/macros-router')
+const macrosRouter = require('./user/user-router')
 
 server.use('/api/macros', macrosRouter)
 
