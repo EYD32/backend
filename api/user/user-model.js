@@ -1,6 +1,6 @@
 const db = require('../data/db-config')
 
-function getUser(){
+async function getUser(){
     return db('user')
 }
 async function newUser(user){
@@ -8,15 +8,18 @@ async function newUser(user){
     return newUser
 } 
 
+async function getUserById(user_id){
+    return db('user').where({ user_id }).first();
+}
 
-
-function updateUser(id, changes){
+async function updateUser(id, changes){
     return db('user').where({id}).update(changes)
 }
 
 
 module.exports = {
     getUser,
+    getUserById,
     newUser,
     updateUser
 }
