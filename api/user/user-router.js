@@ -30,4 +30,13 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.put('/:id', async (req, res, next) => {
+    try{
+        const updatedUser = await User.updateUser(req.params.id, req.body)
+        res.status(200).json(updatedUser)
+    }catch(err){
+        next(err)
+    }
+})
+
 module.exports = router;

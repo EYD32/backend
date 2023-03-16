@@ -12,8 +12,8 @@ async function getUserById(user_id){
     return db('user').where({ user_id }).first();
 }
 
-async function updateUser(id, changes){
-    return db('user').where({id}).update(changes)
+async function updateUser(user_id, changes){
+    return db('user').where({user_id}).update(changes)
 }
 
 
