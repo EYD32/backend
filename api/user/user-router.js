@@ -21,14 +21,14 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
     try{
         const newUser = await User.newUser(req.body)
         res.status(201).json(newUser)
     }catch(err){
         next(err)
-    }
-})
+    } 
+}) 
 
 router.put('/:id', async (req, res, next) => {
     try{
@@ -37,6 +37,6 @@ router.put('/:id', async (req, res, next) => {
     }catch(err){
         next(err)
     }
-})
+}) 
 
 module.exports = router;

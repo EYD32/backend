@@ -15,9 +15,9 @@ exports.up = async (knex) => {
       user.integer('fat').unsigned().defaultTo(0)
       user.integer('carb').unsigned().defaultTo(0)
       user.integer('protein').unsigned().defaultTo(0)
-      user.integer('fatGoal').unsigned()
-      user.integer('carbGoal').unsigned()
-      user.integer('proteinGoal').unsigned()
+      user.integer('fatGoal').unsigned().defaultTo(10)
+      user.integer('carbGoal').unsigned().defaultTo(10)
+      user.integer('proteinGoal').unsigned().defaultTo(10)
   })
 };
 
