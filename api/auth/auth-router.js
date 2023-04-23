@@ -6,12 +6,13 @@ const { user } = require('pg/lib/defaults');
 
 router.post('/register', async (req, res, next) => {
   try {
-    const rounds = process.env.BCRYPT_ROUNDS;
+      let user = req.body
+    const rounds = Number(process.env.BCRYPT_ROUNDS) || 8;
     const hash = bcrypt.hashSync(user.password, rounds);
     
     user.password = hash;
     
-    const newUser = await User.newUser(req.body);
+    const newUser = await Users.newUser(req.body);
     res.status(201).json(newUser);
   } catch (err) {
     next(err);
@@ -32,3 +33,5 @@ router.post('/login', async (req, res, next) => {
         next(err)
     }
 })
+
+module.exports = router;
