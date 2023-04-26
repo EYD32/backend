@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const { tokenBuilder } = require('./token-builder');
 const Users = require('../user/user-model');
 const { user } = require('pg/lib/defaults');
+const {validateUser,validateCredentials} = require('./auth-middleware')
 
 router.post('/register', async (req, res, next) => {
   try {
@@ -19,16 +20,17 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.post('/login', async (req, res, next) => {
+router.post('/login', validateCredentials,  async  (req, res, next) => {
     try{
-        let {firstName, password} = req.user;
-        if(bcrypt.compareSync(req.body.password, password)){
-            const token = tokenBuilder(user)
-            res.status(200).json({ message: `Welcome back, ${firstName}`})
+        let user = req.user;
+        if(bcrypt.compareSync(req.body.password, user.password)){
+            // const token = tokenBuilder(user)
+            res.status(200).json()
         }else{
             next({status:401, message: 'invalid credentials'})
         }
-
+      console.log(user)
+      console.log(req.body)
     }catch(err){
         next(err)
     }
