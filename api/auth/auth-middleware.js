@@ -33,10 +33,11 @@ const validateUser = (req, res, next) => {
 };
 
 const validateCredentials = async (req, res, next) => {
-  const { email } = req.body;
-  
-  const [user] = await User.getUser({ email });
-  try{!user ? next({ status: 401, message: 'bleh' }) : (req.user = user);
+  try{
+    const { email } = req.body;
+    const [user] = await User.getUser( {email} );
+    !user ? next({ status: 401, message: 'bleh' }) : (req.user = user);
+    console.log(user)
   next();
 }catch(err){next(err)}
 };

@@ -4,7 +4,7 @@ const { JWT_SECRET } = require('../secrets/index')
 function tokenBuilder(user){
     const payload = {
         subject: user.user_id,
-        user: user.firstName
+        // user: user.firstName
     };
     const options = {
         expiresIn:'1d',
