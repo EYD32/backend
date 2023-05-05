@@ -22,9 +22,10 @@ router.post('/register', async (req, res, next) => {
 router.post('/login', validateCredentials,  async  (req, res, next) => {
     try{
         let user = req.user;
+        let userId = req.user.user_id
         if(bcrypt.compareSync(req.body.password, user.password)){
             const token = tokenBuilder(user)
-            res.status(200).json( {message: 'Argen Blargen Mr Margen', token})
+            res.status(200).json( {message: 'Argen Blargen Mr Margen', token, userId})
         }else{
             next({status:401, message: 'invalid credentials'})
         }
