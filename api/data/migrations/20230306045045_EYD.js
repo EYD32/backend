@@ -1,4 +1,4 @@
-const { user } = require("pg/lib/defaults");
+
 
 /**
  * @param { import("knex").Knex } knex
@@ -9,7 +9,7 @@ exports.up = async (knex) => {
   .createTable('user', (user) => {
       user.increments('user_id')
       user.string('firstName').notNullable()
-      user.string('lastName').notNullable
+      user.string('lastName').notNullable()
       user.string('email').notNullable().unique()
       user.string('password').notNullable()
       user.integer('fat').unsigned().defaultTo(0)

@@ -3,7 +3,7 @@
  * @returns { Promise<void> }
  */
 
-const user =  {user_id: 1, firstName: 'Tom', lastName:'Shear', email:'ts@assemblage23.com', password: 'dissonance', fatGoal:25, carbGoal: 25, proteinGoal: 50} ;
+const user =  {user_id: 1, firstName: 'Tom', lastName:'Shear', email:'ts@assemblage23.com', password: '$2a$13$TagnRAzpta2Bx9Xgnwb2euHIVaUqfZpokXgy27v6sCR1jC/sg4pAi'} ;
 
 exports.user = user;
 
