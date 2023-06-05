@@ -24,6 +24,14 @@ const restricted = (req, res, next) => {
   }
 };
 
+const validateAccess = (user_id) => (req, res, next) => {
+  if (req.decodedJwt.user_id !== user_id) {
+    next({ status: 403, message: 'Access denied' });
+  } else {
+    next;
+  }
+};
+
 const validateUser = (req, res, next) => {
   const { email, password } = req.body;
   !email || !password || email.trim() === '' || password.trim() === ''
@@ -33,16 +41,18 @@ const validateUser = (req, res, next) => {
 };
 
 const validateCredentials = async (req, res, next) => {
-  try{
+  try {
     const { email } = req.body;
-    const [user] = await User.getUser( {email} );
+    const [user] = await User.getUser({ email });
     !user ? next({ status: 401, message: 'bleh' }) : (req.user = user);
-    console.log(user)
-  next();
-}catch(err){next(err)}
+    next();
+  } catch (err) {
+    next(err);
+  }
 };
 module.exports = {
   restricted,
   validateUser,
   validateCredentials,
+  validateAccess
 };
