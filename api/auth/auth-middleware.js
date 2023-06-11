@@ -25,7 +25,8 @@ const restricted = (req, res, next) => {
 };
 
 const validateAccess = (req, res, next) => {
-  if (req.decodedJwt.subject !== Number(req.params.id)) {
+  let user_id = parseInt(req.params.id, 10)
+  if (req.decodedJwt.subject !== user_id) {
     next({ status: 403, message: 'Access denied' });
   } else {
     next();
