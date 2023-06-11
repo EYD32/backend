@@ -13,7 +13,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.get('/:id',restricted, async (req, res, next) => {
+router.get('/:id', restricted, validateAccess, async (req, res, next) => {
     try{
         const userId = await User.getUserById(req.params.id)
         res.status(200).json(userId)

@@ -24,11 +24,11 @@ const restricted = (req, res, next) => {
   }
 };
 
-const validateAccess = (user_id) => (req, res, next) => {
-  if (req.decodedJwt.user_id !== user_id) {
+const validateAccess = (req, res, next) => {
+  if (req.decodedJwt.subject !== Number(req.params.id)) {
     next({ status: 403, message: 'Access denied' });
   } else {
-    next;
+    next();
   }
 };
 
